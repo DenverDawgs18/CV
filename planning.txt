@@ -8,6 +8,12 @@ The CV will need heavy use of state to pass it down to the sections and the CV w
 be responsible for passing in the callbacks and updating its own display values
 along with the callbacks being responsible for updating the sections' display values
 
+THE CV IS ESSENTIALLY THE ENTIRE THING! ONE COLUMN IS THE FORM ANOTHER
+IS THE ACTUAL CV
+
+
+
+
 Education and Prof sections need to be able to add more than one w an add button and delete button
 This will require objects to be used as state NOT strings
 
