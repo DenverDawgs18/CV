@@ -1,0 +1,31 @@
+Components: 
+General Section
+Education Section
+Professional Section
+Actual CV that takes in props from the other 3 and displays them
+
+The CV will need heavy use of state to pass it down to the sections and the CV will 
+be responsible for passing in the callbacks and updating its own display values
+along with the callbacks being responsible for updating the sections' display values
+
+
+The entire thing will be a form that once submitted, will hide all the inputs and then have an 
+edit button that will open the inputs back up
+
+
+Layout is essentially a 2 column layout. One column is the form, 
+the other column is the resume that is being generated as they type
+
+
+Definitley need to make this look super nice as I want this to be an excellent
+project to put on portfolio for React.
+
+
+Potentially want to look into after form is submitted, adding a button to allow 
+CV to be saved as a pdf or printed.
+
+Should be fun!
+
+
+
+
