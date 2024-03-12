@@ -5,9 +5,15 @@ import Practical from "./Practical";
 export default function CV(){
     return(
         <>
-        <General />
-        <Education />
-        <Practical />
+        
+            <form className="main">
+                <General />
+                <Education />
+                <Practical />
+            </form>
+            <div className="resume">
+                
+            </div>
         </>
     )
 }
