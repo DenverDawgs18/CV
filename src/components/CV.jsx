@@ -1,7 +1,10 @@
 import General from "./General";
 import Education from "./Education";
 import Practical from "./Practical";
+import EducationResume from "./EducationResume"
+import PracticalResume from "./PracticalResume";
 import { useState } from "react";
+
 
 export default function CV(){
     const [firstName, setFirstName] = useState('');
@@ -48,23 +51,9 @@ export default function CV(){
                     <p>Email: {email} </p>
                     <p>Phone number: {phoneNumber} </p>
                 </div>
-                <div className="educationResume">
-                    <h3>Education</h3>
-                    <p>School name: </p>
-                    <p>Degree obtained: </p>
-                    <p>From XXX to XXX</p>
+                <EducationResume />
+                <PracticalResume />
                 
-                {/* Will probably need to factor this and practicalResume into own components to introduce
-                the idea of multiple degrees or jobs */}
-                 
-                </div>
-                <div className="practicalResume">
-                    <h3>Practical Experience</h3>
-                    <p>Company name: </p>
-                    <p>Position title: </p>
-                    <p>Main responsibilities: </p>
-                    <p>From XXX to XXX</p>
-                </div>
 
             </div>
         </div>
