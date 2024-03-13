@@ -1,4 +1,5 @@
-export default function Education({exp, handleSchoolChange, handleDegreeChange}){
+export default function Education({exp, handleSchoolChange, handleDegreeChange,
+handleStartingDateChangeEdu, handleEndingDateChangeEdu}){
     return (
         <div className="education">
             <h1 className="educationH header">Education</h1>
@@ -7,8 +8,10 @@ export default function Education({exp, handleSchoolChange, handleDegreeChange})
             />
             <input type="text" placeholder="Degree (or diploma) obtained: "
             onChange={(e) => handleDegreeChange(exp.id, e)} value={exp.degree}/>
-            <input type="date" placeholder="Date started: "/>
-            <input type="date" placeholder="Date ended: "/>
+            <input type="date" placeholder="Date started: "
+            onChange={(e) => handleStartingDateChangeEdu(exp.id, e)} value={exp.startingDate}/>
+            <input type="date" placeholder="Date ended: "
+            onChange={(e) => handleEndingDateChangeEdu(exp.id, e)} value={exp.endingDate}/>
         </div>
             
     )   

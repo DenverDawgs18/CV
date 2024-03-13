@@ -24,8 +24,8 @@ export default function CV(){
         setPhoneNumber(e.target.value);
     }
     let idCount = 0;
-    const [educationalExperiences, setEducation] = useState([{id: idCount, school: "Harvard", degree: "Applied Math",
-               startingDate: "03/24/2024", endingDate: "05/20/2027"}]);
+    const [educationalExperiences, setEducation] = useState([{id: idCount, school: "", degree: "",
+               startingDate: "", endingDate: ""}]);
     
     function handleSchoolChange(id, e){
         setEducation(educationalExperiences.map(el =>{
@@ -35,9 +35,7 @@ export default function CV(){
             else{
                 return {...el}
             }
-        }))
-
-       
+        }))       
     }
     function handleDegreeChange(id, e){
         setEducation(educationalExperiences.map(el =>{
@@ -48,9 +46,29 @@ export default function CV(){
                 return {...el}
             }
         }))
-
-       
     }
+    function handleStartingDateChangeEdu(id, e){
+        setEducation(educationalExperiences.map(el =>{
+            if(el.id === id){
+                return {...el, startingDate: e.target.value}
+            }
+            else{
+                return {...el}
+            }
+        }))
+    }
+    function handleEndingDateChangeEdu(id, e){
+        setEducation(educationalExperiences.map(el =>{
+            if(el.id === id){
+                return {...el, endingDate: e.target.value}
+            }
+            else{
+                return {...el}
+            }
+        }))
+    }
+
+    
     
     return(
         <div className="wrapper">
@@ -72,6 +90,8 @@ export default function CV(){
                 exp={educationalExperiences.find((el) => el.id === 0)}
                 handleSchoolChange={handleSchoolChange}
                 handleDegreeChange={handleDegreeChange}
+                handleStartingDateChangeEdu={handleStartingDateChangeEdu}
+                handleEndingDateChangeEdu={handleEndingDateChangeEdu}
                 />
                 <Practical />
             </form>
@@ -86,6 +106,8 @@ export default function CV(){
                 <EducationResume 
                 school = {educationalExperiences[0].school}
                 degree = {educationalExperiences[0].degree}
+                startingDate = {educationalExperiences[0].startingDate}
+                endingDate = {educationalExperiences[0].endingDate}
                 />
                 <PracticalResume />
                 
