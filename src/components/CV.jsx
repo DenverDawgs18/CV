@@ -67,7 +67,59 @@ export default function CV(){
             }
         }))
     }
-
+    let pracIdCount = 0;
+    const [practicalExperiences, setPracticalExperiences] = useState({id: pracIdCount, company: '', 
+position: '', mainResponsibilities: '', startingDate: '', endingDate: '',})
+        function handleCompany(id, e){
+            setPracticalExperiences(practicalExperiences.map(el =>{
+                if(el.id === id){
+                    return {...el, company: e.target.value}
+                }
+                else{
+                    return {...el}
+                }
+            }))   
+        }
+        function handlePosition(id, e){
+            setPracticalExperiences(practicalExperiences.map(el =>{
+                if(el.id === id){
+                    return {...el, posiiton: e.target.value}
+                }
+                else{
+                    return {...el}
+                }
+            }))   
+        }
+        function handleResponsibilities(id, e){
+            setPracticalExperiences(practicalExperiences.map(el =>{
+                if(el.id === id){
+                    return {...el, mainResponsibilities: e.target.value}
+                }
+                else{
+                    return {...el}
+                }
+            }))   
+        }
+        function handleStartingDateChangePrac(id, e){
+            setPracticalExperiences(practicalExperiences.map(el =>{
+                if(el.id === id){
+                    return {...el, startingDate: e.target.value}
+                }
+                else{
+                    return {...el}
+                }
+            }))   
+        }
+        function handleEndingDateChangePrac(id, e){
+            setPracticalExperiences(practicalExperiences.map(el =>{
+                if(el.id === id){
+                    return {...el, endingDate: e.target.value}
+                }
+                else{
+                    return {...el}
+                }
+            }))   
+        }
     
     
     return(
