@@ -14,12 +14,7 @@ IS THE ACTUAL CV
 
 
 
-Education and Prof sections need to be able to add more than one w an add button and delete button
-This will require objects to be used as state NOT strings
-
-
-The entire thing will be a form that once submitted, will hide all the inputs and then have an 
-edit button that will open the inputs back up
+Education section of the form is an object with an id 
 
 
 Layout is essentially a 2 column layout. One column is the form, 

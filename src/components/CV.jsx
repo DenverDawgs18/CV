@@ -23,6 +23,22 @@ export default function CV(){
     function handlePNChange(e){
         setPhoneNumber(e.target.value);
     }
+    let idCount = 0;
+    const [educationalExperiences, setEducation] = useState([{id: idCount, school: "Harvard", degree: "Applied Math",
+               startingDate: "03/24/2024", endingDate: "05/20/2027"}]);
+    
+    function handleSchoolChange(id, e){
+        setEducation(educationalExperiences.map(el =>{
+            if(el.id === id){
+                return {...el, school: e.target.value}
+            }
+            else{
+                return {...el}
+            }
+        }))
+
+       
+    }
     
     return(
         <div className="wrapper">
@@ -40,7 +56,10 @@ export default function CV(){
                 PNValue={phoneNumber}
                 handlePNChange={handlePNChange}
                 />
-                <Education />
+                <Education 
+                exp={educationalExperiences.find((el) => el.id === 0)}
+                handleSchoolChange={handleSchoolChange}
+                />
                 <Practical />
             </form>
             <div className="resume">
@@ -51,7 +70,9 @@ export default function CV(){
                     <p>Email: {email} </p>
                     <p>Phone number: {phoneNumber} </p>
                 </div>
-                <EducationResume />
+                <EducationResume 
+                school = {educationalExperiences[0].school}
+                />
                 <PracticalResume />
                 
 
