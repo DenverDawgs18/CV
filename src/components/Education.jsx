@@ -2,7 +2,6 @@ export default function Education({exp, handleSchoolChange, handleDegreeChange,
 handleStartingDateChangeEdu, handleEndingDateChangeEdu}){
     return (
         <div className="education">
-            <h1 className="educationH header">Education</h1>
             <input type="text" placeholder="School name:" 
             onChange={(e) => handleSchoolChange(exp.id, e)} value={exp.school}
             />

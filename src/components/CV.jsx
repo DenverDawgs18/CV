@@ -23,7 +23,7 @@ export default function CV(){
     function handlePNChange(e){
         setPhoneNumber(e.target.value);
     }
-    let idCount = 0;
+    const [idCount, setIdCount] = useState(0)
     const [educationalExperiences, setEducation] = useState([{id: idCount, school: "", degree: "",
                startingDate: "", endingDate: ""}]);
     
@@ -120,14 +120,46 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
                 }
             }))   
         }
-    
-    
-    return(
-        <div className="wrapper">
+    const [eduInputs, setEduInputs] = useState([]);
+    function handleAddEducation(){
+        setIdCount(
+            idCount + 1
+        )
+       console.log(idCount)
+
+        setEducation(
+            [
+                ...educationalExperiences,
+                {id: idCount, school: '', degree: '', startingDate: '', endingDate: '' }
+            ]
+        )
+        
+        
+        setEduInputs(
+            [
+                ...eduInputs,
+                <Education 
+        key={idCount}
+        exp={educationalExperiences.find((el) => el.id === 0)}
+        handleSchoolChange={handleSchoolChange}
+        handleDegreeChange={handleDegreeChange}
+        handleStartingDateChangeEdu={handleStartingDateChangeEdu}
+        handleEndingDateChangeEdu={handleEndingDateChangeEdu}/>
+            ]
+        )
+        console.log(eduInputs)
 
         
+    }
+    function handleForm(e){
+        e.preventDefault()
+    }
+    return(
+        <div className="wrapper">
         
-            <form className="main">
+        
+        
+            <form className="main" onSubmit={(e) => handleForm(e)}>
                 <General 
                 FNvalue={firstName}
                 handleFChange={handleFNChange}
@@ -138,13 +170,9 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
                 PNValue={phoneNumber}
                 handlePNChange={handlePNChange}
                 />
-                <Education 
-                exp={educationalExperiences.find((el) => el.id === 0)}
-                handleSchoolChange={handleSchoolChange}
-                handleDegreeChange={handleDegreeChange}
-                handleStartingDateChangeEdu={handleStartingDateChangeEdu}
-                handleEndingDateChangeEdu={handleEndingDateChangeEdu}
-                />
+                <h1>Education</h1>
+                {eduInputs}
+                <button onClick={handleAddEducation}>Add Education: </button>
                 <Practical
                  exp={practicalExperiences.find((el) => el.id === 0)}
                  handleCompany={handleCompany}

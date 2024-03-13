@@ -33,3 +33,9 @@ Should be fun!
 
 
 
+CURRENT ISSUES:
+Only one character and value not updating on input fields on Education
+The resume part of education has not been touched yet with the refactored education
+Practical has not been worked on yet -- essentially just copy paste from the education section
+The educations are really close -- need some grid way to add a little gap between them
+:)
