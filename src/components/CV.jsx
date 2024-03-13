@@ -39,6 +39,18 @@ export default function CV(){
 
        
     }
+    function handleDegreeChange(id, e){
+        setEducation(educationalExperiences.map(el =>{
+            if(el.id === id){
+                return {...el, degree: e.target.value}
+            }
+            else{
+                return {...el}
+            }
+        }))
+
+       
+    }
     
     return(
         <div className="wrapper">
@@ -59,6 +71,7 @@ export default function CV(){
                 <Education 
                 exp={educationalExperiences.find((el) => el.id === 0)}
                 handleSchoolChange={handleSchoolChange}
+                handleDegreeChange={handleDegreeChange}
                 />
                 <Practical />
             </form>
@@ -72,6 +85,7 @@ export default function CV(){
                 </div>
                 <EducationResume 
                 school = {educationalExperiences[0].school}
+                degree = {educationalExperiences[0].degree}
                 />
                 <PracticalResume />
                 
