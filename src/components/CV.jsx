@@ -68,8 +68,8 @@ export default function CV(){
         }))
     }
     let pracIdCount = 0;
-    const [practicalExperiences, setPracticalExperiences] = useState({id: pracIdCount, company: '', 
-position: '', mainResponsibilities: '', startingDate: '', endingDate: '',})
+    const [practicalExperiences, setPracticalExperiences] = useState([{id: pracIdCount, company: '', 
+position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
         function handleCompany(id, e){
             setPracticalExperiences(practicalExperiences.map(el =>{
                 if(el.id === id){
@@ -83,7 +83,7 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',})
         function handlePosition(id, e){
             setPracticalExperiences(practicalExperiences.map(el =>{
                 if(el.id === id){
-                    return {...el, posiiton: e.target.value}
+                    return {...el, position: e.target.value}
                 }
                 else{
                     return {...el}
@@ -145,7 +145,14 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',})
                 handleStartingDateChangeEdu={handleStartingDateChangeEdu}
                 handleEndingDateChangeEdu={handleEndingDateChangeEdu}
                 />
-                <Practical />
+                <Practical
+                 exp={practicalExperiences.find((el) => el.id === 0)}
+                 handleCompany={handleCompany}
+                 handlePosition={handlePosition} 
+                 handleResponsibilities={handleResponsibilities}
+                 handleStartingDateChangePrac={handleStartingDateChangePrac}
+                 handleEndingDateChangePrac={handleEndingDateChangePrac}
+                 />
             </form>
             <div className="resume">
                 <div className="generalResume">
@@ -161,7 +168,10 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',})
                 startingDate = {educationalExperiences[0].startingDate}
                 endingDate = {educationalExperiences[0].endingDate}
                 />
-                <PracticalResume />
+                <PracticalResume 
+                
+                
+                />
                 
 
             </div>
