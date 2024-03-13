@@ -169,8 +169,11 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
                 endingDate = {educationalExperiences[0].endingDate}
                 />
                 <PracticalResume 
-                
-                
+                company = {practicalExperiences[0].company}
+                position = {practicalExperiences[0].position}
+                responsibilities={practicalExperiences[0].mainResponsibilities}
+                startingDate = {practicalExperiences[0].startingDate}
+                endingDate = {practicalExperiences[0].endingDate}
                 />
                 
 
