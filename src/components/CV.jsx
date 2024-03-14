@@ -31,12 +31,26 @@ export default function CV(){
         setEducation(educationalExperiences.map(el =>{
             if(el.id === id){
                 return {...el, school: e.target.value}
+                
             }
             else{
                 return {...el}
             }
+        }))
+        setEduInputs(eduInputs.map(el => {
+            if(el.key == id){
+                console.log(eduInputs)
+                let elem = educationalExperiences.find((elm) => elm.id == id);
+                console.log(elem)
+                console.log(el)
+                return 
+            }
+            else{
+                
+            }
         }))       
     }
+    
     function handleDegreeChange(id, e){
         setEducation(educationalExperiences.map(el =>{
             if(el.id === id){
@@ -120,40 +134,54 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
                 }
             }))   
         }
-    const [eduInputs, setEduInputs] = useState([]);
+    const [eduInputs, setEduInputs] = useState([<Education 
+        key={0}
+        exp={educationalExperiences.find((el) => el.id === 0)}
+        handleSchoolChange={handleSchoolChange}
+        handleDegreeChange={handleDegreeChange}
+        handleStartingDateChangeEdu={handleStartingDateChangeEdu}
+        handleEndingDateChangeEdu={handleEndingDateChangeEdu}/>]);
     function handleAddEducation(){
         setIdCount(
             idCount + 1
         )
-       console.log(idCount)
+       
 
         setEducation(
             [
                 ...educationalExperiences,
-                {id: idCount, school: '', degree: '', startingDate: '', endingDate: '' }
-            ]
+                {id: idCount + 1, school: '', degree: '', startingDate: '', endingDate: '' }
+            ],
+
         )
-        
-        
         setEduInputs(
+
             [
                 ...eduInputs,
                 <Education 
-        key={idCount}
-        exp={educationalExperiences.find((el) => el.id === 0)}
+        key={idCount + 1}
+        exp={educationalExperiences.find((el) => el.id === idCount + 1)}
         handleSchoolChange={handleSchoolChange}
         handleDegreeChange={handleDegreeChange}
         handleStartingDateChangeEdu={handleStartingDateChangeEdu}
         handleEndingDateChangeEdu={handleEndingDateChangeEdu}/>
             ]
         )
-        console.log(eduInputs)
+    }
+        
 
         
-    }
+    
     function handleForm(e){
         e.preventDefault()
+        
+        console.log(eduInputs)
+        let elm  = eduInputs.find((el) => el.key == 0)
+        console.log(elm)
+        console.log(eduInputs)
+
     }
+    
     return(
         <div className="wrapper">
         
@@ -172,7 +200,7 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
                 />
                 <h1>Education</h1>
                 {eduInputs}
-                <button onClick={handleAddEducation}>Add Education: </button>
+                <button onClick={() => handleAddEducation()}>Add Education: </button>
                 <Practical
                  exp={practicalExperiences.find((el) => el.id === 0)}
                  handleCompany={handleCompany}
