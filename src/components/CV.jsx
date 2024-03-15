@@ -83,58 +83,63 @@ export default function CV(){
     
         
     }
-    let pracIdCount = 0;
+    const [pracIdCount, setPracIdCount] = useState(0)
     const [practicalExperiences, setPracticalExperiences] = useState([{id: pracIdCount, company: '', 
 position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
         function handleCompany(id, e){
-            setPracticalExperiences(practicalExperiences.map(el =>{
-                if(el.id === id){
-                    return {...el, company: e.target.value}
+            const updatedPracExps = practicalExperiences.map((el) => {
+                if (el.id === id) {
+                  return { ...el, company: e.target.value };
+                } else {
+                  return el;
                 }
-                else{
-                    return {...el}
-                }
-            }))   
+              });
+            
+              setPracticalExperiences(updatedPracExps);
         }
         function handlePosition(id, e){
-            setPracticalExperiences(practicalExperiences.map(el =>{
-                if(el.id === id){
-                    return {...el, position: e.target.value}
+            const updatedPracExps = practicalExperiences.map((el) => {
+                if (el.id === id) {
+                  return { ...el, position: e.target.value };
+                } else {
+                  return el;
                 }
-                else{
-                    return {...el}
-                }
-            }))   
+              });
+            
+              setPracticalExperiences(updatedPracExps); 
         }
         function handleResponsibilities(id, e){
-            setPracticalExperiences(practicalExperiences.map(el =>{
-                if(el.id === id){
-                    return {...el, mainResponsibilities: e.target.value}
+            const updatedPracExps = practicalExperiences.map((el) => {
+                if (el.id === id) {
+                  return { ...el, mainResponsibilities: e.target.value };
+                } else {
+                  return el;
                 }
-                else{
-                    return {...el}
-                }
-            }))   
+              });
+            
+              setPracticalExperiences(updatedPracExps);
         }
         function handleStartingDateChangePrac(id, e){
-            setPracticalExperiences(practicalExperiences.map(el =>{
-                if(el.id === id){
-                    return {...el, startingDate: e.target.value}
+            const updatedPracExps = practicalExperiences.map((el) => {
+                if (el.id === id) {
+                  return { ...el, startingDate: e.target.value };
+                } else {
+                  return el;
                 }
-                else{
-                    return {...el}
-                }
-            }))   
+              });
+            
+              setPracticalExperiences(updatedPracExps);
         }
         function handleEndingDateChangePrac(id, e){
-            setPracticalExperiences(practicalExperiences.map(el =>{
-                if(el.id === id){
-                    return {...el, endingDate: e.target.value}
+            const updatedPracExps = practicalExperiences.map((el) => {
+                if (el.id === id) {
+                  return { ...el, endingDate: e.target.value };
+                } else {
+                  return el;
                 }
-                else{
-                    return {...el}
-                }
-            }))   
+              });
+            
+              setPracticalExperiences(updatedPracExps);
         }
     function handleAddEducation(){
         const newId= idCount + 1;
@@ -163,7 +168,36 @@ const newEduOutputs = educationalExperiences.map(exp => (
   key = {exp.id}
   exp = {exp} />
 ));
-console.log(newEduOutputs)
+function handleAddPrac(){
+  const newId = pracIdCount + 1;
+  setPracIdCount(newId)
+
+  const newPracExperience = {id: newId, company: '', position: '', mainResponsibilities: '', startingDate: '', endingDate: ''}
+  setPracticalExperiences(prevPracticalExperiences => [
+    ...prevPracticalExperiences, 
+    newPracExperience
+  ])
+
+  
+}
+const newPracInputs = practicalExperiences.map(exp => (
+  <Practical 
+        key={exp.id}
+        exp={exp}
+        handleCompany={handleCompany}
+        handlePosition={handlePosition}
+        handleResponsibilities={handleResponsibilities}
+        handleStartingDateChangePrac={handleStartingDateChangePrac}
+        handleEndingDateChangePrac={handleEndingDateChangePrac}
+  />
+))
+const newPracOutputs = practicalExperiences.map(exp => (
+    <PracticalResume
+    key={exp.id}
+    exp={exp}
+    />
+
+))
         
     
     function handleForm(e){
@@ -189,14 +223,9 @@ console.log(newEduOutputs)
                 <h1>Education</h1>
                 {newEduInputs}
                 <button onClick={() => handleAddEducation()}>Add Education: </button>
-                <Practical
-                 exp={practicalExperiences.find((el) => el.id === 0)}
-                 handleCompany={handleCompany}
-                 handlePosition={handlePosition} 
-                 handleResponsibilities={handleResponsibilities}
-                 handleStartingDateChangePrac={handleStartingDateChangePrac}
-                 handleEndingDateChangePrac={handleEndingDateChangePrac}
-                 />
+                <h3>Practical Experiences</h3>
+                {newPracInputs}
+                <button onClick={() => handleAddPrac()}>Add Practical Experience:</button>
             </form>
             <div className="resume">
                 <div className="generalResume">
@@ -208,13 +237,8 @@ console.log(newEduOutputs)
                 </div>
                 <h3>Education</h3>
                 {newEduOutputs}
-                <PracticalResume 
-                company = {practicalExperiences[0].company}
-                position = {practicalExperiences[0].position}
-                responsibilities={practicalExperiences[0].mainResponsibilities}
-                startingDate = {practicalExperiences[0].startingDate}
-                endingDate = {practicalExperiences[0].endingDate}
-                />
+                <h3>Practical Experience:</h3>
+                {newPracOutputs}
                 
 
             </div>

@@ -10,7 +10,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 .general,.education,.practical{
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 .main{
@@ -32,8 +33,10 @@ input{
 
 .resume{
   max-width: 100%;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 2px solid black;
   border-radius: 5px;
 }

@@ -2,7 +2,6 @@ export default function Practical({exp, handleCompany, handlePosition, handleRes
 handleEndingDateChangePrac}){
     return(
         <div className="practical">
-            <h1 className="practicalH header">Practical Experience</h1>
             <input type="text" placeholder="Company name" 
             onChange={(e) => handleCompany(exp.id, e)} value={exp.company}/>
             <input type="text" placeholder="Position title: " 

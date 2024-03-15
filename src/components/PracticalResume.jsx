@@ -1,11 +1,11 @@
-export default function PracticalResume({company, position, responsibilities, startingDate, endingDate}){
+export default function PracticalResume({exp}){
     return(
         <div className="practicalResume">
-                    <h3>Practical Experience</h3>
-                    <p>Company name: {company} </p>
-                    <p>Position title: {position}</p>
-                    <p>Main responsibilities: {responsibilities} </p>
-                    <p>From {startingDate ? startingDate : 'A'} to {endingDate ? endingDate : 'B'}</p>
+                    
+                    <p>Company name: {exp.company} </p>
+                    <p>Position title: {exp.position}</p>
+                    <p>Main responsibilities: {exp.mainResponsibilities} </p>
+                    <p>From {exp.startingDate ? exp.startingDate : 'A'} to {exp.endingDate ? exp.endingDate : 'B'}</p>
         </div>
     )
 }
