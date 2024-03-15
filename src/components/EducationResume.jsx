@@ -1,10 +1,9 @@
-export default function EducationResume({school, degree, startingDate, endingDate}){
+export default function EducationResume({exp}){
     return(
         <div className="educationResume">
-            <h3>Education</h3>
-            <p>School name: {school}</p>
-            <p>Degree obtained: {degree} </p>
-            <p>From {startingDate ? startingDate : 'X'} to {endingDate ? endingDate : 'Y'}</p>       
+            <p>School name: {exp.school}</p>
+            <p>Degree obtained: {exp.degree} </p>
+            <p>From {exp.startingDate ? exp.startingDate : 'X'} to {exp.endingDate ? exp.endingDate : 'Y'}</p>       
         </div>
     )
 }

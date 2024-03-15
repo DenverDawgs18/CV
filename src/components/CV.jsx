@@ -5,6 +5,7 @@ import EducationResume from "./EducationResume"
 import PracticalResume from "./PracticalResume";
 import { useState } from "react";
 import { useEffect } from "react";
+import { ssrExportAllKey } from "vite/runtime";
 
 
 export default function CV(){
@@ -148,7 +149,7 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
     }
         
   const newEduInputs = educationalExperiences.map(exp => (
-    <Education 
+    <Education
         key={exp.id}
         exp={exp}
         handleSchoolChange={handleSchoolChange}
@@ -157,6 +158,12 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
         handleEndingDateChangeEdu={handleEndingDateChangeEdu}
     />
 ));
+const newEduOutputs = educationalExperiences.map(exp => (
+  <EducationResume 
+  key = {exp.id}
+  exp = {exp} />
+));
+console.log(newEduOutputs)
         
     
     function handleForm(e){
@@ -199,12 +206,8 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
                     <p>Email: {email} </p>
                     <p>Phone number: {phoneNumber} </p>
                 </div>
-                <EducationResume 
-                school = {educationalExperiences[0].school}
-                degree = {educationalExperiences[0].degree}
-                startingDate = {educationalExperiences[0].startingDate}
-                endingDate = {educationalExperiences[0].endingDate}
-                />
+                <h3>Education</h3>
+                {newEduOutputs}
                 <PracticalResume 
                 company = {practicalExperiences[0].company}
                 position = {practicalExperiences[0].position}
