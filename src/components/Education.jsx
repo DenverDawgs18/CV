@@ -3,15 +3,16 @@ handleStartingDateChangeEdu, handleEndingDateChangeEdu}){
     return (
         <div className="education">
             <input type="text" placeholder="School name:" 
-            onChange={(e) => handleSchoolChange(exp.id, e)} value={exp.school}
+            onChange={(e) => handleSchoolChange(exp.id, e)}
             />
             <input type="text" placeholder="Degree (or diploma) obtained: "
-            onChange={(e) => handleDegreeChange(exp.id, e)} value={exp.degree}/>
+            onChange={(e) => handleDegreeChange(exp.id, e)}/>
             <input type="date" placeholder="Date started: "
-            onChange={(e) => handleStartingDateChangeEdu(exp.id, e)} value={exp.startingDate}/>
+            onChange={(e) => handleStartingDateChangeEdu(exp.id, e)} />
             <input type="date" placeholder="Date ended: "
-            onChange={(e) => handleEndingDateChangeEdu(exp.id, e)} value={exp.endingDate}/>
+            onChange={(e) => handleEndingDateChangeEdu(exp.id, e)}/>
         </div>
+          
             
     )   
 }

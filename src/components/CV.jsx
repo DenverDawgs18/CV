@@ -4,6 +4,7 @@ import Practical from "./Practical";
 import EducationResume from "./EducationResume"
 import PracticalResume from "./PracticalResume";
 import { useState } from "react";
+import { useEffect } from "react";
 
 
 export default function CV(){
@@ -28,58 +29,58 @@ export default function CV(){
                startingDate: "", endingDate: ""}]);
     
     function handleSchoolChange(id, e){
-        setEducation(educationalExperiences.map(el =>{
-            if(el.id === id){
-                return {...el, school: e.target.value}
-                
+        
+        const updatedEducationalExperiences = educationalExperiences.map((el) => {
+            if (el.id === id) {
+               
+              return { ...el, school: e.target.value };
+            } else {
+            return el;
             }
-            else{
-                return {...el}
-            }
-        }))
-        setEduInputs(eduInputs.map(el => {
-            if(el.key == id){
-                console.log(eduInputs)
-                let elem = educationalExperiences.find((elm) => elm.id == id);
-                console.log(elem)
-                console.log(el)
-                return 
-            }
-            else{
-                
-            }
-        }))       
-    }
+          });
+        
+          setEducation(updatedEducationalExperiences);
+       
+          };
+        
+  
     
     function handleDegreeChange(id, e){
-        setEducation(educationalExperiences.map(el =>{
-            if(el.id === id){
-                return {...el, degree: e.target.value}
+        const updatedEducationalExperiences = educationalExperiences.map((el) => {
+            if (el.id === id) {
+              return { ...el, degree: e.target.value };
+            } else {
+              return el;
             }
-            else{
-                return {...el}
-            }
-        }))
+          });
+        
+          setEducation(updatedEducationalExperiences);
+         
     }
     function handleStartingDateChangeEdu(id, e){
-        setEducation(educationalExperiences.map(el =>{
-            if(el.id === id){
-                return {...el, startingDate: e.target.value}
+        const updatedEducationalExperiences = educationalExperiences.map((el) => {
+            if (el.id === id) {
+              return { ...el, startingDate: e.target.value };
+            } else {
+              return el;
             }
-            else{
-                return {...el}
-            }
-        }))
+          });
+        
+          setEducation(updatedEducationalExperiences);
+
     }
     function handleEndingDateChangeEdu(id, e){
-        setEducation(educationalExperiences.map(el =>{
-            if(el.id === id){
-                return {...el, endingDate: e.target.value}
+        const updatedEducationalExperiences = educationalExperiences.map((el) => {
+            if (el.id === id) {
+              return { ...el, endingDate: e.target.value };
+            } else {
+              return el;
             }
-            else{
-                return {...el}
-            }
-        }))
+          });
+        
+          setEducation(updatedEducationalExperiences);
+    
+        
     }
     let pracIdCount = 0;
     const [practicalExperiences, setPracticalExperiences] = useState([{id: pracIdCount, company: '', 
@@ -134,52 +135,32 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
                 }
             }))   
         }
-    const [eduInputs, setEduInputs] = useState([<Education 
-        key={0}
-        exp={educationalExperiences.find((el) => el.id === 0)}
-        handleSchoolChange={handleSchoolChange}
-        handleDegreeChange={handleDegreeChange}
-        handleStartingDateChangeEdu={handleStartingDateChangeEdu}
-        handleEndingDateChangeEdu={handleEndingDateChangeEdu}/>]);
     function handleAddEducation(){
-        setIdCount(
-            idCount + 1
-        )
-       
+        const newId= idCount + 1;
+    
+        setIdCount(newId)
 
-        setEducation(
-            [
-                ...educationalExperiences,
-                {id: idCount + 1, school: '', degree: '', startingDate: '', endingDate: '' }
-            ],
-
-        )
-        setEduInputs(
-
-            [
-                ...eduInputs,
-                <Education 
-        key={idCount + 1}
-        exp={educationalExperiences.find((el) => el.id === idCount + 1)}
-        handleSchoolChange={handleSchoolChange}
-        handleDegreeChange={handleDegreeChange}
-        handleStartingDateChangeEdu={handleStartingDateChangeEdu}
-        handleEndingDateChangeEdu={handleEndingDateChangeEdu}/>
-            ]
-        )
+        const newEducationalExp = {id: newId, school: '', degree: '', startingDate: '', endingDate: ''}
+        setEducation(prevEducationalExperiences => [
+            ...prevEducationalExperiences,
+            newEducationalExp
+        ])
     }
         
-
+  const newEduInputs = educationalExperiences.map(exp => (
+    <Education 
+        key={exp.id}
+        exp={exp}
+        handleSchoolChange={handleSchoolChange}
+        handleDegreeChange={handleDegreeChange}
+        handleStartingDateChangeEdu={handleStartingDateChangeEdu}
+        handleEndingDateChangeEdu={handleEndingDateChangeEdu}
+    />
+));
         
     
     function handleForm(e){
         e.preventDefault()
-        
-        console.log(eduInputs)
-        let elm  = eduInputs.find((el) => el.key == 0)
-        console.log(elm)
-        console.log(eduInputs)
-
     }
     
     return(
@@ -199,7 +180,7 @@ position: '', mainResponsibilities: '', startingDate: '', endingDate: '',}])
                 handlePNChange={handlePNChange}
                 />
                 <h1>Education</h1>
-                {eduInputs}
+                {newEduInputs}
                 <button onClick={() => handleAddEducation()}>Add Education: </button>
                 <Practical
                  exp={practicalExperiences.find((el) => el.id === 0)}
